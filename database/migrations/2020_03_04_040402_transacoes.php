@@ -13,15 +13,15 @@ class Transacoes extends Migration
      */
     public function up()
     {
-        Schema::table('transacoes', function (Blueprint $table){
-           $table->bigIncrements('id');
-           $table->string('data'); // doubt: string, date, dateTime or timestamps
-           $table->bigInteger('valor');
-           $table->bigInteger('id_subcategoria');
-           $table->foreign('id_subcategoria')
-               ->on('subcategoria')
-               ->references('id');
-           $table->string('tipo');
+        Schema::create('transacoes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('data'); // doubt: string, date, dateTime or timestamps
+            $table->bigInteger('valor');
+            $table->bigInteger('subcategoria_id');
+            $table->foreign('subcategoria_id')
+                ->references('id')
+                ->on('subcategoria');
+            $table->string('tipo');
 
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Transacoes extends Migration
+class CreateTransactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class Transacoes extends Migration
      */
     public function up()
     {
-        Schema::create('transacoes', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('data'); // doubt: string, date, dateTime or timestamps
-            $table->bigInteger('valor');
-            $table->bigInteger('subcategoria_id');
-            $table->foreign('subcategoria_id')
+            $table->timestamps();
+            $table->bigInteger('value');
+            $table->bigInteger('subcategory_id');
+            $table->foreign('subcategory_id')
                 ->references('id')
-                ->on('subcategoria');
-            $table->string('tipo');
-
+                ->on('subcategories');
+            $table->string('tipy');
         });
     }
 
@@ -33,6 +32,6 @@ class Transacoes extends Migration
      */
     public function down()
     {
-        Schema::drop('transacoes');
+        Schema::dropIfExists('transactions');
     }
 }

@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/teste','TesteController@oneToOne');
 Route::get('/', function () {
     return view('welcome');
 });

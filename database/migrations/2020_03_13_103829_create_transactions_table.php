@@ -20,7 +20,10 @@ class CreateTransactionsTable extends Migration
             $table->foreign('subcategory_id')
                 ->references('id')
                 ->on('subcategories');
-            $table->string('type');
+            $table->enum('subcategory_type',['rec','desp']);
+            $table->foreign('subcategory_type')
+                ->references('type')
+                ->on('subcategories');
             $table->date('transaction_date');
             $table->timestamps();
         });

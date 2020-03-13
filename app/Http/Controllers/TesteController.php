@@ -4,15 +4,18 @@
 namespace App\Http\Controllers;
 
 
-use App\Category;
-use App\Subcategory;
+use App\Models\Category;
+use App\Models\Subcategory;
 
 class TesteController
 {
     public function oneToOne()
     {
-        $subCategoria = new Category;
-        echo $subCategoria->subcategory()->find(1);
-        echo $subCategoria;
+        $subCategoria = new Subcategory;
+
+        echo $subCategoria->find(1);
+        echo $subCategoria->find(1)->category;
+        die('foi');
+
     }
 }

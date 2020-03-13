@@ -15,13 +15,14 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
             $table->bigInteger('value');
             $table->bigInteger('subcategory_id');
             $table->foreign('subcategory_id')
                 ->references('id')
                 ->on('subcategories');
-            $table->string('tipy');
+            $table->string('type');
+            $table->date('transaction_date');
+            $table->timestamps();
         });
     }
 
